@@ -29,11 +29,12 @@
             })).json();
         },
     }">
-            <label>First Name:</label><input type="text" x-model="name"><br>
-            <label>Last Name:</label><input type="text" x-model="email"><br>
+            <label>Name:</label><input type="text" x-model="name"><br>
+            <label>Email:</label><input type="text" x-model="email"><br>
             <button x-on:click="callmethod1">Create Order</button>
             <br><br>
-            <p>Order Nummer: <strong x-text="responsedata.name"></strong></p>
+            <p>Name: <strong x-text="responsedata.name"></strong></p>
+            <p>Name: <strong x-text="responsedata.email"></strong></p>
         </div>
 </body>
 </html>

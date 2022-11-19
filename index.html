@@ -15,6 +15,17 @@
     
     <div x-data="{
         responsedata: null,
+        async getData() {
+            this.responsedata = await (await fetch('https://randomizer-service-brentvandereyd.cloud.okteto.net/internet')).json();
+        }
+    }">
+        <button x-on:click="getData">Send get request</button>
+        Data returned: <strong x-text="responsedata[0]">Placeholder</strong>
+    </div>
+ 
+    
+    <div x-data="{
+        responsedata: null,
         name: null,
         email: null,
         async callmethod1() {

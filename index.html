@@ -12,5 +12,34 @@
         <button x-on:click="getData">Send get request</button>
         Data returned: <strong x-text="responsedata[0]">Placeholder</strong>
     </div>
+    
+    <div x-data="{
+        responsedata: null,
+        name: null,
+        email: null,
+        async callmethod1() {
+            this.responsedata = await (await fetch('https://randomizer-service-brentvandereyd.cloud.okteto.net/japan', 
+            {
+                method: 'POST',
+                body: JSON.stringify({
+                    name: this.name,
+                    email: this.email,
+                }),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+            })).json();
+
+            console.log(this.responsedata);
+        },
+    }">
+        <input type="text" x-model="name">
+        <input type="text" x-model="amail">
+        <button x-on:click="callmethod1">Call method</button>
+
+        <p>Data inserted with id: <strong x-text="responsedata.name"></strong></p>
+        <p>Title that was inserted: <strong x-text="responsedata.email"></strong></p>
+
+    </div>
 </body>
 </html>

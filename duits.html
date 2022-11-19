@@ -1,1 +1,35 @@
-
+<html>
+<head>
+    <script defer src="https://unpkg.com/alpinejs@3.5.0/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="topnav">
+        <a class="active" href="index">Home</a>
+        <a href="japan">Japan</a>
+        <a class="active">Duitsland</a>
+    </div>
+    <h1>Faker</h1>
+    
+    <div x-data="{
+        responsedata: null,
+        async getData() {
+            this.responsedata = await (await fetch('https://randomizer-service-brentvandereyd.cloud.okteto.net/Duits')).json();
+        }
+    }">
+        <button x-on:click="getData">Send get request</button>
+        Data returned: <strong x-text="responsedata[0]">Placeholder</strong>
+    </div>
+    
+    <div x-data="{
+        responsedata: null,
+        async getData() {
+            this.responsedata = await (await fetch('https://randomizer-service-brentvandereyd.cloud.okteto.net/internet')).json();
+        }
+    }">
+        <button x-on:click="getData">Send get request</button>
+        Data returned: <strong x-text="responsedata[0]">Placeholder</strong>
+    </div>
+ 
+</body>
+</html>
